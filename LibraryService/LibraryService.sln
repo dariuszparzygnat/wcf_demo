@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryService", "LibraryService\LibraryService.csproj", "{DCBBA352-8DC6-434F-A0C2-6FA7FE1D9D2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryService.Contracts", "LibraryService.Contracts\LibraryService.Contracts.csproj", "{65EFCABA-5394-4295-8D71-89638B27A01E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCBBA352-8DC6-434F-A0C2-6FA7FE1D9D2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCBBA352-8DC6-434F-A0C2-6FA7FE1D9D2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCBBA352-8DC6-434F-A0C2-6FA7FE1D9D2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCBBA352-8DC6-434F-A0C2-6FA7FE1D9D2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65EFCABA-5394-4295-8D71-89638B27A01E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65EFCABA-5394-4295-8D71-89638B27A01E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65EFCABA-5394-4295-8D71-89638B27A01E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65EFCABA-5394-4295-8D71-89638B27A01E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
