@@ -13,17 +13,15 @@ namespace LibraryService.Contracts
     {
         [OperationContract]
         [WebGet(UriTemplate ="/GetBooksWithRest", ResponseFormat = WebMessageFormat.Json,
- BodyStyle = WebMessageBodyStyle.Wrapped)]
+ BodyStyle = WebMessageBodyStyle.Bare)]
         IEnumerable<BookRestData> GetBooksWithRest();
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json,
 BodyStyle = WebMessageBodyStyle.Wrapped)]
-        BookRestData GetBookInfoWithRest(string title);
+        BookRestData GetBookInfoWithRest(int bookId);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "/AddBookWithRest?title={title}&author={author}&yearOfPublication={yearOfPublication}", Method = "POST")]
         string AddBookWithRest(string title, string author, string yearOfPublication);
-
-
     }
 }

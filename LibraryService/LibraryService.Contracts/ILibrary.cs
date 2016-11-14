@@ -11,16 +11,19 @@ namespace LibraryService.Contracts
     public interface ILibrary
     {
         [OperationContract]
-        BookData GetBookInfo(string bookTitle);
+        BookData GetBookInfo(int bookId);
 
         [OperationContract]
         IEnumerable<string> GetAuthors();
 
         [OperationContract]
+        IEnumerable<BookData> GetBooks(string bookTitle);
+
+        [OperationContract]
         IEnumerable<int> GetYearsOfPublication();
 
-        [OperationContract(Name = "GetBooksByAuthor")]
-        IEnumerable<BookData> GetBooks(string author);
+        [OperationContract]
+        IEnumerable<BookData> GetBooksByAuthor(string author);
 
         [OperationContract(Name = "GetBooksByYear")]
         IEnumerable<BookData> GetBooks(int yearOfPublication);

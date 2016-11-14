@@ -1,0 +1,69 @@
+﻿@model LibraryClient.Models.YearOfPublicationsViewModel
+@{
+    ViewBag.Title = "Lata publikacji";
+}
+<h2>@ViewBag.Title</h2>
+<h3>W bibliotece znajdują się publikacje z następujących lat:</h3>
+
+@if (Model.YearsOfPublication != null)
+{
+    if (Model.YearsOfPublication.Any())
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    Rok
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.YearsOfPublication)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Pokaż książki", "YearsOfPublication", "Home", new { yearOfPublication = item }, new { @class = "btn btn-default" })
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <div style="color: silver; text-align: center; width: 100%;">Brak rekordów.</div>
+    }
+}
+
+@if (Model.PublicatedBooks != null)
+{
+    <h4>Publikacje z @Model.SelectedYear roku:</h4>
+    if (Model.PublicatedBooks.Any())
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    Tytuł
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.PublicatedBooks)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Szczegóły", "BookDetails", "Home", new { id = item.Id }, new { @class = "btn btn-default" })
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <div style="color: silver; text-align: center; width: 100%;">Brak książek.</div>
+    }
+}

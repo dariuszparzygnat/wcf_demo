@@ -1,0 +1,53 @@
+﻿@model LibraryClient.Models.BookSearchViewModel
+@{
+    ViewBag.Title = "Książki";
+}
+<h2>@ViewBag.Title</h2>
+<h4 style="margin-top: 20px">Wyszukaj książki:</h4>
+<div style="overflow: auto;">
+    @using (@Html.BeginForm())
+    {
+        <p style="width: 30%">@Html.TextBox("BookTitle", null, new { @placeholder = "Tytuł", @class = "form-control" })</p>
+        <input type="submit" value="Szukaj" class="btn btn-default"/>
+    }
+</div>
+
+@if (Model.Books != null)
+{
+    if (Model.Books.Any())
+    {
+        <h4>Znaleziono następujące książki:</h4>
+        <table class="table">
+            <tr>
+                <th>
+                    Tytuł
+                </th>
+                <th>
+                    Autor
+                </th>
+                <th>
+                    Rok wydania
+                </th>
+            </tr>
+
+            @foreach (var item in Model.Books)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Author)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.YearOfPublication)
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <div style="color: silver; text-align: center;">Brak rezultatów.</div>
+    }
+}

@@ -8,11 +8,11 @@ namespace LibraryService
 {
     public class LibraryManager : ILibrary, ILibraryRest 
     {
-        public BookData GetBookInfo(string bookTitle)
+        public BookData GetBookInfo(int bookId)
         {
             using (var context = new BookContext())
             {
-                var book = context.Book.FirstOrDefault(e => e.Title.Contains(bookTitle));
+                var book = context.Book.FirstOrDefault(e => e.Id == bookId);
                 if (book == null)
                     return null;
                 return new BookData()
@@ -43,11 +43,26 @@ namespace LibraryService
             }
         }
 
-        public IEnumerable<BookData> GetBooks(string author)
+        public IEnumerable<BookData> GetBooksByAuthor(string author)
         {
             using (var context = new BookContext())
             {
                 var books = context.Book.Where(e => e.Author.Contains(author)).Select(book => new BookData()
+                {
+                    Author = book.Author,
+                    Id = book.Id,
+                    Title = book.Title,
+                    YearOfPublication = book.YearOfPublication
+                }).ToList();
+                return books;
+            }
+        }
+
+        public IEnumerable<BookData> GetBooks(string bookTitle)
+        {
+            using (var context = new BookContext())
+            {
+                var books = context.Book.Where(e => e.Title.Contains(bookTitle)).Select(book => new BookData()
                 {
                     Author = book.Author,
                     Id = book.Id,
@@ -104,11 +119,11 @@ namespace LibraryService
             }
         }
 
-        public BookRestData GetBookInfoWithRest(string title)
+        public BookRestData GetBookInfoWithRest(int bookId)
         {
             using (var context = new BookContext())
             {
-                var book = context.Book.FirstOrDefault(e => e.Title.Contains(title));
+                var book = context.Book.FirstOrDefault(e => e.Id == bookId);
                 if (book == null)
                     return null;
                 return new BookRestData()

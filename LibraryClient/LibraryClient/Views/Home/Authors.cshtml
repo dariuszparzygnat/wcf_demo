@@ -1,0 +1,69 @@
+﻿@model LibraryClient.Models.AuthorsViewModel
+@{
+    ViewBag.Title = "Autorzy";
+}
+<h2>@ViewBag.Title</h2>
+<h3>W bibliotece dostępni są następujący autorzy:</h3>
+
+@if (Model.Authors != null)
+{
+    if (Model.Authors.Any())
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    Autor
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Authors)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Pokaż książki", "Authors", "Home", new { author = item }, new { @class = "btn btn-default" })
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <div style="color: silver; text-align: center; width: 100%;">Brak autorów.</div>
+    }
+}
+
+@if (Model.PublicatedBooks != null)
+{
+    <h4>Publikacje @Model.SelectedAuthor :</h4>
+    if (Model.PublicatedBooks.Any())
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    Tytuł
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.PublicatedBooks)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Szczegóły", "BookDetails", "Home", new { id = item.Id }, new { @class = "btn btn-default" })
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <div style="color: silver; text-align: center; width: 100%;">Brak książek.</div>
+    }
+}

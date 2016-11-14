@@ -1,0 +1,29 @@
+﻿@model LibraryClient.Models.AddBookViewModel
+@{
+    ViewBag.Title = "Dodaj książkę";
+}
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("AddBook", "Home", FormMethod.Post, new { @class = "form-vertical", role = "form" }))
+{
+    @Html.ValidationSummary(false)
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(x => x.Title, new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Author, new {@class = "control-label col-md-2"})
+            @Html.TextBoxFor(x => x.Author, new {@class = "form-control"})
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.YearOfPublication, new {@class = "control-label col-md-2"})
+            @Html.TextBoxFor(x => x.YearOfPublication, new {@class = "form-control"})
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Dodaj lekcję" class="btn btn-primary" style="margin-left: 10px;" />
+        </div>
+    </div>
+}
